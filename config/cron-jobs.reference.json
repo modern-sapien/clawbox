@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "email-check-default",
+      "agentId": "main",
+      "sessionKey": "agent:main:slack:direct:YOUR_SLACK_USER_ID_LOWERCASE",
+      "name": "Email Summary",
+      "enabled": true,
+      "createdAtMs": 0,
+      "updatedAtMs": 0,
+      "schedule": {
+        "everyMs": 14400000,
+        "kind": "every",
+        "anchorMs": 0
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "CRON\n\nCheck for new emails in the last 5 hours. For each email, provide:\n- Sender\n- Category (e.g., INBOX, UNREAD, CATEGORY_UPDATES)\n- 1-2 sentence summary of content\n\nIf no emails, respond with exactly: \"no emails, whew.\"\n\nRun `gog gmail search 'newer_than:5h' --max 10` for the check."
+      },
+      "state": {}
+    }
+  ]
+}

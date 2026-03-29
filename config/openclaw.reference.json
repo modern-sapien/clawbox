@@ -1,0 +1,105 @@
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://host.docker.internal:11434",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen3.5:9b-q4_K_M",
+            "name": "Qwen 3.5 9B",
+            "reasoning": false,
+            "input": ["text", "image"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 24576,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "mistral": {
+        "baseUrl": "https://api.mistral.ai/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "mistral-large-latest",
+            "name": "Mistral Large",
+            "reasoning": false,
+            "input": ["text", "image"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 262144,
+            "maxTokens": 262144
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "mistral/mistral-small-latest"
+      },
+      "models": {
+        "ollama/qwen3.5:9b-q4_K_M": { "alias": "Qwen Local" },
+        "mistral/mistral-large-latest": { "alias": "Mistral" },
+        "mistral/mistral-small-latest": {}
+      },
+      "workspace": "/home/node/.openclaw/workspace",
+      "sandbox": {
+        "mode": "off"
+      }
+    }
+  },
+  "tools": {
+    "profile": "coding",
+    "exec": {
+      "host": "gateway",
+      "security": "full",
+      "ask": "off"
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerAllowFrom": ["slack:YOUR-SLACK-USER-ID"]
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "slack": {
+      "mode": "socket",
+      "enabled": true,
+      "botToken": "xoxb-YOUR-BOT-TOKEN",
+      "appToken": "xapp-YOUR-APP-TOKEN",
+      "groupPolicy": "allowlist",
+      "dmPolicy": "pairing",
+      "allowFrom": ["*"],
+      "channels": {
+        "*": { "allow": true }
+      },
+      "nativeStreaming": true,
+      "streaming": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "GENERATE-A-RANDOM-TOKEN-HERE"
+    },
+    "tailscale": {
+      "mode": "off"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "slack": {
+        "enabled": true
+      }
+    }
+  }
+}

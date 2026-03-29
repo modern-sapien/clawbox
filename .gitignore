@@ -1,0 +1,15 @@
+.claude
+
+# Secrets
+config/.env
+config/client_secret_*.json
+
+# Cloned OpenClaw repo (build artifact)
+openclaw/
+
+# Claude Code state
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
