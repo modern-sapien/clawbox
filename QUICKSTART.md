@@ -4,10 +4,29 @@ Get OpenClaw running in Docker with Slack, Gmail, Calendar, Fathom, and HubSpot 
 
 ## Prerequisites
 
+**Required:**
 - Docker Desktop installed and running
-- A Slack workspace where you can install apps
-- API keys for the services you want (Mistral, Fathom, HubSpot)
-- A Google account for Gmail/Calendar/Drive
+- A Slack workspace where you can install apps (admin or app install permissions)
+
+**At least one LLM provider (pick one):**
+- Mistral API key — [console.mistral.ai](https://console.mistral.ai) (recommended, free tier available)
+- OpenAI API key — [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+- Ollama running locally — [ollama.com](https://ollama.com) (free, no API key needed)
+
+**For Gmail / Calendar / Drive integration:**
+- A Google account
+- A Google Cloud project with OAuth 2.0 credentials (Desktop app type)
+- Gmail API, Calendar API, and Google Drive API enabled on the project
+- If Google Advanced Protection is enabled: you'll need to temporarily unenroll during OAuth setup, then re-enroll
+
+**For Fathom integration (optional):**
+- Fathom account with API access
+- API key from Fathom Settings → API → Generate key
+
+**For HubSpot integration (optional):**
+- HubSpot account with admin access
+- Private App access token from Settings → Integrations → Private Apps
+- Scopes needed: `crm.objects.contacts.read`, `crm.objects.companies.read`, `crm.objects.deals.read` (add `.write` scopes if you want the agent to update records)
 
 ## 1. Build the Docker image
 
