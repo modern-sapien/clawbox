@@ -191,3 +191,27 @@ Send a DM to your bot in Slack. Try:
 | Google Drive full write scope | `gog` requests full `drive` scope. Enforce read-only via AGENTS.md Red Lines. Fork `gog` to change scope to `drive.readonly`. |
 
 See [troubleshooting.md](troubleshooting.md) for the full list.
+
+## CLI Access
+
+The full OpenClaw CLI is available inside the container:
+
+```bash
+# Health check and auto-fix
+docker exec openclaw openclaw doctor
+
+# Terminal chat UI (alternative to Slack)
+docker exec -it openclaw openclaw tui
+
+# List skills
+docker exec openclaw openclaw skills list
+
+# Manage cron jobs
+docker exec openclaw openclaw cron list
+
+# View sessions
+docker exec openclaw openclaw sessions
+
+# Security audit
+docker exec openclaw openclaw security audit
+```
