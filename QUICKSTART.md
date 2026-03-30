@@ -1,6 +1,22 @@
 # Quickstart
 
-Get OpenClaw running in Docker with Slack, Gmail, Calendar, Fathom, and HubSpot in ~15 minutes.
+Get OpenClaw running in Docker with Slack, Gmail, Calendar, Fathom, and HubSpot.
+
+## Choose your path
+
+**Option A — One command (recommended):**
+
+```bash
+bash install.sh
+```
+
+The installer prompts for your API keys and tokens, configures everything, and starts the container. Skip to [Verify](#10-verify) when it finishes.
+
+**Option B — Step by step:**
+
+Follow the numbered sections below if you prefer to set things up manually or need to customize along the way.
+
+---
 
 ## Prerequisites
 
