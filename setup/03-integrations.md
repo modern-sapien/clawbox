@@ -84,33 +84,28 @@ docker exec -e GOG_KEYRING_PASSWORD=openclaw-local -e GOG_ACCOUNT=you@gmail.com 
 
 ## Fathom (Meeting Notes)
 
-Fathom uses a simple REST API with an API key.
+Fathom uses a simple REST API with an API key. The Fathom skill handles all meeting lookups automatically — no TOOLS.md configuration needed.
 
 ### 1. Get your API key
 
 Go to [Fathom Settings](https://fathom.video/settings) → API → Generate key.
 
-### 2. Add to TOOLS.md
+### 2. Add API key to `.env`
 
-Add the Fathom curl commands to `~/.openclaw/workspace/TOOLS.md` with your API key hardcoded (env var expansion doesn't work reliably in exec):
+Add to `config/.env`:
 
-```markdown
-## Fathom (Meeting Notes)
-
-### List recent meetings
-
-curl -s -H "X-API-Key: YOUR_KEY" "https://api.fathom.ai/external/v1/meetings?include_summary=true&include_action_items=true"
-
-### Get summary for a recording
-
-curl -s -H "X-API-Key: YOUR_KEY" "https://api.fathom.ai/external/v1/recordings/{recording_id}/summary"
-
-### Get transcript for a recording
-
-curl -s -H "X-API-Key: YOUR_KEY" "https://api.fathom.ai/external/v1/recordings/{recording_id}/transcript"
+```bash
+FATHOM_API_KEY=your-fathom-api-key
 ```
 
-Add a note: **Never share or output the API key.**
+### 3. Install the Fathom skill
+
+```bash
+cp -r config/skills/fathom ~/.openclaw/workspace/skills/fathom
+chmod +x ~/.openclaw/workspace/skills/fathom/scripts/fathom-search.sh
+```
+
+The skill auto-loads on container start — no additional configuration needed. It triggers automatically when the agent handles meeting/call/transcript queries and uses domain-based filtering to find calls for specific companies.
 
 ## Docker Run Command (with all integrations)
 

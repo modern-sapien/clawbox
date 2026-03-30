@@ -112,9 +112,13 @@ gog auth tokens export you@gmail.com --out ~/.openclaw/gogcli/token.json
 mkdir -p ~/.openclaw/workspace
 cp config/TOOLS.reference.md ~/.openclaw/workspace/TOOLS.md
 cp config/AGENTS.reference.md ~/.openclaw/workspace/AGENTS.md
+
+# Install skills
+cp -r config/skills ~/.openclaw/workspace/skills
+chmod +x ~/.openclaw/workspace/skills/fathom/scripts/fathom-search.sh
 ```
 
-Edit `~/.openclaw/workspace/TOOLS.md` — replace placeholder values with your own. `AGENTS.md` is pre-configured with TOOLS.md in the startup sequence and security Red Lines.
+Edit `~/.openclaw/workspace/TOOLS.md` — replace placeholder values with your own. `AGENTS.md` is pre-configured with TOOLS.md in the startup sequence and security Red Lines. Skills auto-load from the workspace — no additional config needed.
 
 ## 7. Start the container
 
